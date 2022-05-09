@@ -1,0 +1,57 @@
+name: NPM构建发布
+
+on:
+  push:
+    tags: [v*]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1.clone代码仓库到ubuntu
+        uses: actions/checkout@v2
+        with:
+          ref: master # 默认checkout master分支
+          fetch-depth: 0 # 默认pull所有分支和tag
+          token: ${{ secrets.AODAZHANG_TOKEN }} # Personal access token
+
+      - name: 2.安装node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+          registry-url: https://registry.npmjs.org/
+
+      - name: 3.安装项目依赖并构建
+        run: |
+          npm i yarn -g
+          yarn install
+          yarn build
+
+      - name: 4.发布到NPM
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          npm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 5.发布到阿里云ECS
+        uses: easingthemes/ssh-deploy@v2
+        env:
+          ARGS: '-rltgoDzvO --delete'
+          SSH_PRIVATE_KEY: ${{ secrets.ECS_PRIVATE_KEY }} # ssh key
+          REMOTE_HOST: ${{ secrets.ECS_HOST }} # ECS公网地址
+          REMOTE_USER: ${{ secrets.ECS_USER }} # ECS用户名
+          SOURCE: dist-example/ # 构建目录
+          TARGET: /root/web-dist/aoda-css # 部署目录
+
+      - name: 6.根据tags创建changelog并推送仓库master分支
+        run: |
+          git config --global user.name "AodaZhang"
+          git config --global user.email "zhangxinyu1989@foxmail.com"
+          npm i conventional-changelog-cli -g
+          conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+          yarn lint
+          git add .
+          git commit -m "docs(all): changelog变更"
+          git push origin master

@@ -1,0 +1,26 @@
+/*
+ * @description 杂项
+ * @author aodazhang 2022.05.09
+ */
+@import '../setting/scssVariable.scss';
+@import '../mixins/index.scss';
+
+/****************************** 一.禁用文本选中 ******************************/
+
+// 命名规则：us-类型
+// 示例：us-n -> user-select: none;
+[us-n] {
+  -webkit-user-select: none; // Chrome, Safari, Opera
+  -moz-user-select: none; // Firefox
+  -ms-user-select: none; // IE10
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+/****************************** 二.禁用css伪类和js事件触发 ******************************/
+
+// 命名规则：pe-类型
+// 示例：pe-n -> pointer-events: none;
+[pe-n] {
+  pointer-events: none;
+}

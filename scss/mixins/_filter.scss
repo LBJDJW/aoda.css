@@ -1,0 +1,79 @@
+/*
+ * @description 滤镜
+ * @author aodazhang 2022.05.09
+ */
+
+/****************************** 一.filter滤镜 ******************************/
+
+// 1.滤镜：滤镜会导致fixed元素定位失效，建议分别给固定元素和其他元素加filter，不要直接在body中添加
+@mixin filter($filterType: blur(3px)) {
+  -webkit-filter: $filterType; // Chrome, Safari
+  -moz-filter: $filterType; // Firefox
+  -ms-filter: $filterType; // IE10
+  -o-filter: $filterType; // Opera
+  filter: $filterType;
+}
+
+// 2.色相：0deg原色(默认) ~ 360deg
+@mixin filterHueRotate($angle: 90deg) {
+  @include filter(hue-rotate($angle));
+}
+
+// 3.饱和度：1原色(默认)
+@mixin filterSaturate($percentage: 50%) {
+  @include filter(saturate($percentage));
+}
+
+// 4.明度：0暗 ~ 1原色(默认)
+@mixin filterBrightness($percentage: 50%) {
+  @include filter(brightness($percentage));
+}
+
+// 5.对比度：1原色(默认)
+@mixin filterContrast($percentage: 50%) {
+  @include filter(contrast($percentage));
+}
+
+// 6.灰度：0原色 ~ 1黑白(默认)
+@mixin filterGrayscale($percentage: 50%) {
+  @include filter(grayscale($percentage));
+}
+
+// 7.褐色度：0原色 ~ 1褐色(默认)
+@mixin filterSepia($percentage: 50%) {
+  @include filter(sepia($percentage));
+}
+
+// 8.颜色反转：0原色 ~ 1反色(默认)
+@mixin filterInvert($percentage: 50%) {
+  @include filter(invert($percentage));
+}
+
+// 9.不透明度：0透明 ~ 1不透明(默认)
+@mixin filterOpacity($percentage: 50%) {
+  @include filter(opacity($percentage));
+}
+
+// 10.高斯模糊：0px不模糊(默认)
+@mixin filterBlur($radius: 3px) {
+  @include filter(blur($radius));
+}
+
+// 11.图片阴影：webkit不支持drop-shadow的spread阴影扩展
+@mixin filterDropShadow(
+  $color: rgba(0, 0, 0, 0.5),
+  $x: 5px,
+  $y: 5px,
+  $blur: 5px
+) {
+  @include filter(drop-shadow($x $y $blur $color));
+}
+
+/****************************** 二.mix-blend-mode混合模式 ******************************/
+
+// 1.混合模式：多元素
+@mixin mixBlendMode($mixBlendMode: overlay) {
+  // initial 初始 | inherit 继承 | unset 复原 | normal 无
+  // multiply 正片叠底 | screen 滤色 | overlay 叠加 | darken 变暗 | lighten 变亮 | color-dodge 颜色减淡 | color-burn 颜色加深 | hard-light 强光 | soft-light 柔光 | difference 差值 | exclusion 排除 | hue 色相 | saturation 饱和度 | color 颜色 | luminosity 亮度
+  mix-blend-mode: $mixBlendMode;
+}

@@ -1,0 +1,30 @@
+/*
+ * @description 响应式适配
+ * @author aodazhang 2022.05.09
+ * @see 由小->大依次匹配
+ */
+@import '../setting/scssVariable.scss';
+
+@media #{$--mixins-xs} {
+  // xs：576px-
+}
+
+@media #{$--mixins-sm} {
+  // sm：576px+
+}
+
+@media #{$--mixins-md} {
+  // md：768px+
+}
+
+@media #{$--mixins-lg} {
+  // lg：992px+
+}
+
+@media #{$--mixins-xl} {
+  // xl：1200px+
+}
+
+@media #{$--mixins-xxl} {
+  // xxl：1400px+
+}

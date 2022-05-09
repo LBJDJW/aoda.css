@@ -1,0 +1,150 @@
+/*
+ * @description 盒模型
+ * @author aodazhang 2022.05.09
+ */
+@import '../setting/scssVariable.scss';
+@import '../mixins/index.scss';
+
+/****************************** 一.盒模型 ******************************/
+
+// 命名规则：bs-类型
+// 示例：bs-b -> box-sizing: border-box;
+@each $key, $value in $--atomic-box-sizing {
+  [bs-#{$key}] {
+    box-sizing: $value;
+  }
+}
+
+/****************************** 二.内外边距 ******************************/
+
+// 命名规则：{pa、ph、pv、pt、pb、pl、pr、ma、mh、mv、mt、mb、ml、mr}-数值
+// 示例：pa-10 -> padding: 10px;
+@each $key, $value in $--atomic-edge {
+  @for $i from 1 through $--atomic-size {
+    [#{$key}a-#{$i}] {
+      #{$value}: #{$i}px;
+    }
+
+    [#{$key}h-#{$i}] {
+      #{$value}-left: #{$i}px;
+      #{$value}-right: #{$i}px;
+    }
+
+    [#{$key}v-#{$i}] {
+      #{$value}-top: #{$i}px;
+      #{$value}-bottom: #{$i}px;
+    }
+
+    [#{$key}t-#{$i}] {
+      #{$value}-top: #{$i}px;
+    }
+
+    [#{$key}b-#{$i}] {
+      #{$value}-bottom: #{$i}px;
+    }
+
+    [#{$key}l-#{$i}] {
+      #{$value}-left: #{$i}px;
+    }
+
+    [#{$key}r-#{$i}] {
+      #{$value}-right: #{$i}px;
+    }
+  }
+}
+
+/****************************** 三.滚动 ******************************/
+
+// 命名规则：ov-类型
+// 示例：ov-y -> overflow-x: hidden; overflow-y: auto;
+[ov-x] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+[ov-y] {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+[ov-a] {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+[ov-h] {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/****************************** 四.异形屏 ******************************/
+
+// 命名规则：sa-类型
+// 示例：sa-t -> padding-top: constant(safe-area-inset-top);
+[sa-t] {
+  padding-top: constant(safe-area-inset-top); // ios < 11.2
+  padding-top: env(safe-area-inset-top); // ios >= 11.2
+}
+
+[sa-b] {
+  padding-bottom: constant(safe-area-inset-bottom); // ios < 11.2
+  padding-bottom: env(safe-area-inset-bottom); // ios >= 11.2
+}
+
+/****************************** 五.flex容器 ******************************/
+
+// 命名规则：fl-主轴类型
+// 示例：fl-r -> flex-flow: row nowrap;
+@each $key, $value in $--atomic-flex-direction {
+  [fl-#{$key}] {
+    display: flex;
+    flex-direction: $value;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+// 命名规则：fl-fw换行类型
+// 示例：fl-fwn -> flex-wrap: row nowrap;
+@each $key, $value in $--atomic-flex-wrap {
+  [fl-fw#{$key}] {
+    flex-wrap: $value;
+  }
+}
+
+// 命名规则：fl-{jc、ai、ac}轴对齐类型
+// 示例：fl-jcc -> justify-content: center;
+@each $key, $value in $--atomic-flex-content {
+  [fl-jc#{$key}] {
+    justify-content: $value;
+  }
+
+  [fl-ai#{$key}] {
+    align-items: $value;
+  }
+
+  [fl-ac#{$key}] {
+    align-content: $value;
+  }
+}
+
+/****************************** 六.flex元素 ******************************/
+
+// 命名规则：fl-元素缩放类型
+// 示例：fl-0 -> flex: 0 0 auto;
+[fl-0] {
+  flex: 0 0 auto; // 不可放大缩小
+}
+
+[fl-1] {
+  flex: 1 1 auto; // 可放大缩小
+}
+
+[fl-g] {
+  flex: 1 0 auto; // 可放大
+}
+
+[fl-s] {
+  flex: 0 1 auto; // 可缩小
+}

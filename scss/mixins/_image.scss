@@ -1,0 +1,105 @@
+/*
+ * @description 图片
+ * @author aodazhang 2022.05.09
+ */
+@import '../setting/scssVariable.scss';
+
+/****************************** 一.background-image图片 ******************************/
+
+// 1.本地资源
+@mixin imageLocal(
+  $baseUrl,
+  $imageName,
+  $backgroundSize: cover,
+  $imageExtension: 'png'
+) {
+  background-image: url('#{$baseUrl}/#{$imageName}.#{$imageExtension}');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: $backgroundSize; // cover 保持图片比例铺满容器 | contain 保持图片比例在容器完整显示图片
+}
+
+// 2.网络资源
+@mixin imageNetwork($url, $backgroundSize: cover) {
+  background-image: url('#{$url}');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: $backgroundSize; // cover 保持图片比例铺满容器 | contain 保持图片比例在容器完整显示图片
+}
+
+// 3.根据dpr适配2x、3x资源
+@mixin imageDpr(
+  $baseUrl,
+  $imageName,
+  $backgroundSize: cover,
+  $imageExtension: 'png'
+) {
+  @include imageLocal($baseUrl, $imageName, $backgroundSize, $imageExtension);
+
+  @media #{$--mixins-dpr2} {
+    @include imageLocal(
+      $baseUrl,
+      '#{$imageName}@2x',
+      $backgroundSize,
+      $imageExtension
+    );
+  }
+
+  @media #{$--mixins-dpr3} {
+    @include imageLocal(
+      $baseUrl,
+      '#{$imageName}@3x',
+      $backgroundSize,
+      $imageExtension
+    );
+  }
+}
+
+/****************************** 二.background-image渐变 ******************************/
+
+// 1.双色线性渐变
+@mixin gradientLinear(
+  $leftColor: #ffa751,
+  $rightColor: #ffe259,
+  $angle: 90deg
+) {
+  // angle | left/right | top/bottom
+  // TODO 多个属性值拼接
+  background-image: linear-gradient($angle, $leftColor, $rightColor);
+}
+
+// 2.重复线性渐变
+@mixin gradientRepeating($repeatColor: #ffa751, $angle: 45deg) {
+  // TODO 多个属性值拼接
+  background-image: repeating-linear-gradient(
+    $angle,
+    transparent 0%,
+    transparent 2.5%,
+    $repeatColor 2.5%,
+    $repeatColor 5%
+  );
+}
+
+// 3.双色径向渐变
+@mixin gradientRadial(
+  $insideColor: #ffa751,
+  $outsideColor: #ffe259,
+  $shape: circle,
+  $size: farthest-corner,
+  $position: center
+) {
+  // TODO 多个属性值拼接
+  background-image: radial-gradient(
+    $shape $size at $position,
+    $insideColor,
+    $outsideColor
+  );
+}
+
+/****************************** 三.img标签图片 ******************************/
+
+// 1.img标签适配
+@mixin imgFit($objectFit: cover) {
+  object-fit: $objectFit; // cover 保持图片比例铺满容器 | contain 保持图片比例在容器完整显示图片
+  object-position: center;
+}

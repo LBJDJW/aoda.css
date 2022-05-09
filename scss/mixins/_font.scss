@@ -1,0 +1,62 @@
+/*
+ * @description 字体
+ * @author aodazhang 2022.05.09
+ */
+
+// 1.字体尺寸：字号、字行高、对齐方式、字宽、字间距
+@mixin fontSize(
+  $fontSize: var(--aoda-fontSize1),
+  $textAlign: start,
+  $fontWeight: normal,
+  $lineHeight: var(--aoda-lineHeight),
+  $wordWrap: break-word,
+  $wordBreak: break-all,
+  $wordSpacing: normal
+) {
+  font-weight: $fontWeight; // 字重
+  font-size: $fontSize; // 字号
+  line-height: $lineHeight; // 字行高
+  text-align: $textAlign; // 字体对齐
+  word-wrap: $wordWrap; // 文本换行（normal 只在半角空格或连字符的地方进行换行 | break-word 在边界内换行）
+  word-break: $wordBreak; // 字母间断（normal 默认情况 | break-all 单词到边界时,下个字母自动到下一行 | keep-all 单词不断）
+  word-spacing: $wordSpacing; // 字体间距
+}
+
+// 2.字体样式：字风格、字首行缩进、字修饰、字大小写转换
+@mixin fontStyle(
+  $fontStyle: normal,
+  $textIndent: 0,
+  $textDecoration: none,
+  $textTransform: none
+) {
+  font-style: $fontStyle; // 文本风格：斜体italic
+  text-transform: $textTransform; // 文本转换：单词首字母大写capitalize
+  text-decoration: $textDecoration; // 文本修饰：删除线line-through
+  text-indent: $textIndent; // 文本首行缩进尺寸
+}
+
+// 3.字体颜色：字色、字体阴影
+@mixin fontColor($color: var(--aoda-color1), $textShadow: 0 0 0 transparent) {
+  color: $color;
+  // TODO 多个属性值拼接
+  text-shadow: $textShadow;
+}
+
+// 4.文本省略号
+@mixin fontNoWrap($line: 1) {
+  @if $line==1 {
+    overflow: hidden !important;
+    white-space: nowrap !important; // 文本空白处不换行
+    text-overflow: ellipsis !important; // 文本超出宽度省略号
+  }
+
+  @if $line>1 {
+    display: -webkit-box; // 作为弹性伸缩盒显示
+    -webkit-box-orient: vertical; // 设置或检索伸缩盒对象的子元素的排列方式
+    -webkit-line-clamp: $line; //设定行数，超出行数则省略，只webkit有效
+    overflow: hidden !important;
+    white-space: normal !important; // 文本空白处换行
+    text-overflow: ellipsis !important; // 文本超出宽度省略号
+    word-break: break-all !important; // 文本允许在单词内换行
+  }
+}

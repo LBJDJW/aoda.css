@@ -1,0 +1,129 @@
+/*
+ * @description 布局
+ * @author aodazhang 2022.05.09
+ */
+
+/****************************** 一.清除浮动 ******************************/
+
+// 1.清除浮动
+@mixin clearFloat($clear: both) {
+  *zoom: 1;
+
+  &::after {
+    display: block;
+    clear: $clear;
+    height: 0;
+    visibility: hidden;
+    content: ' ';
+  }
+}
+
+/****************************** 二.垂直居中 **************************/
+
+// 1.flex实现
+@mixin centerFlex {
+  @include flex(center);
+}
+
+// 2.absolute实现
+@mixin centerPosition {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/****************************** 三.columns布局 **************************/
+
+// 1.容器
+@mixin column(
+  $columnCount: 3,
+  $columnGap: 0,
+  $columnWidth: auto,
+  $columnRuleWidth: 0,
+  $columnRuleStyle: none,
+  $columnRuleColor: rgb(0, 0, 0),
+  $columnFill: auto
+) {
+  -webkit-columns: $columnWidth $columnCount;
+  columns: $columnWidth $columnCount; // columns列宽/列数(auto | number)
+  column-fill: $columnFill; // columns列高度指定(auto本列内容决定 | balance内容最多的列决定)
+  column-gap: $columnGap; // columns列间距(normal 1em | number)
+  column-rule: $columnRuleWidth $columnRuleStyle $columnRuleColor; // columns列边框宽度/样式/颜色
+}
+
+// 2.元素
+@mixin columnItem($columnSpan: none) {
+  -webkit-column-span: $columnSpan;
+  column-span: $columnSpan; // columns中某一列是否跨列(none | all)
+}
+
+/****************************** 四.flex布局 **************************/
+
+// 1.容器：容器设为flex布局以后，子元素的float、clear、vertical-align属性将失效
+@mixin flex(
+  $justifyContent: flex-start,
+  $flexWrap: nowrap,
+  $flexDirection: row,
+  $alignItems: center,
+  $alignContent: stretch
+) {
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: $flexDirection $flexWrap; // flex-item排列方向(row | row-reverse | column | column-reverse) 换行方式(nowrap | wrap | wrap-reverse)
+  align-content: $alignContent; // flex-item多交叉轴对齐方式(flex-start | flex-end | center | space-between | space-around | stretch)
+  align-items: $alignItems; // flex-item单交叉轴对齐方式(flex-start | flex-end | center | space-between | space-around | stretch)
+  justify-content: $justifyContent; // flex-item主轴对齐方式(flex-start | flex-end | center | space-between | space-around | stretch)
+}
+
+// 2.元素
+@mixin flexItem(
+  $flexGrow: 1,
+  $flexShrink: 1,
+  $flexBasis: auto,
+  $order: 0,
+  $alignSelf: auto
+) {
+  flex: $flexGrow $flexShrink $flexBasis; // flex-item是否支持放大/缩小(0不支持 | 1支持)
+  align-self: $alignSelf; // flex-item在交叉轴对齐方式(auto | flex-start | flex-end | center | baseline | stretch)
+  order: $order; // flex-item排序系数(小 -> 大)
+}
+
+/****************************** 五.grid布局 **************************/
+
+// 1.容器：容器设为网格布局以后，子元素的float、display: inline-block、display: table-cell、vertical-align、column-*等属性将失效
+@mixin grid(
+  $columnWidth: 100px,
+  $rowHeight: 100px,
+  $gridColumnGap: 5px,
+  $gridRowGap: $gridColumnGap,
+  $gridAutoFlow: row,
+  $columns: auto-fill,
+  $rows: auto-fill,
+  $alignItems: stretch,
+  $justifyItems: stretch,
+  $alignContent: stretch,
+  $justifyContent: stretch
+) {
+  display: grid;
+  grid-auto-flow: $gridAutoFlow; // 水平/垂直开始排列
+  grid-gap: $gridRowGap $gridColumnGap; // 行/列间隔
+  grid-template-rows: repeat($rows, $rowHeight); // 行数/行宽度
+  grid-template-columns: repeat($columns, $columnWidth); // 列数/列宽度
+  place-items: $alignItems $justifyItems; // grid-item本身填充方式(start | end | center | stretch)
+  place-content: $alignContent $justifyContent; // grid-item内部填充方式(start | end | center | stretch)
+}
+
+// 2.元素
+@mixin gridItem(
+  $columnSpan: 1,
+  $rowSpan: 1,
+  $display: inline-grid,
+  $alignSelf: auto,
+  $justifySelf: auto
+) {
+  display: $display;
+  grid-row: span $rowSpan / 1; // grid-item占几行
+  grid-column: span $columnSpan / 1; // grid-item占几列
+  place-self: $alignSelf $justifySelf; // grid-item内部填充方式(start | end | center | stretch)
+}

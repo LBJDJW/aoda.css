@@ -1,0 +1,149 @@
+{
+  "ab-": {
+    "type": "boolean"
+  },
+  "ac-": {
+    "type": "boolean"
+  },
+  "b-": {
+    "type": "boolean"
+  },
+  "ba-": {
+    "type": "boolean"
+  },
+  "bb-": {
+    "type": "boolean"
+  },
+  "bg-": {
+    "type": "boolean"
+  },
+  "br-": {
+    "type": "boolean"
+  },
+  "bs-": {
+    "type": "boolean"
+  },
+  "bt-": {
+    "type": "boolean"
+  },
+  "co-": {
+    "type": "boolean"
+  },
+  "cu-": {
+    "type": "boolean"
+  },
+  "fl-": {
+    "type": "boolean"
+  },
+  "fl-fw": {
+    "type": "boolean"
+  },
+  "fl-jc": {
+    "type": "boolean"
+  },
+  "fl-ai": {
+    "type": "boolean"
+  },
+  "fl-ac": {
+    "type": "boolean"
+  },
+  "fs-": {
+    "type": "boolean"
+  },
+  "fw-": {
+    "type": "boolean"
+  },
+  "hb-": {
+    "type": "boolean"
+  },
+  "hc-": {
+    "type": "boolean"
+  },
+  "l-": {
+    "type": "boolean"
+  },
+  "lh-": {
+    "type": "boolean"
+  },
+  "ma-": {
+    "type": "boolean"
+  },
+  "mb-": {
+    "type": "boolean"
+  },
+  "mh-": {
+    "type": "boolean"
+  },
+  "ml-": {
+    "type": "boolean"
+  },
+  "mr-": {
+    "type": "boolean"
+  },
+  "mt-": {
+    "type": "boolean"
+  },
+  "mv-": {
+    "type": "boolean"
+  },
+  "nw-": {
+    "type": "boolean"
+  },
+  "of-": {
+    "type": "boolean"
+  },
+  "op-": {
+    "type": "boolean"
+  },
+  "ov-": {
+    "type": "boolean"
+  },
+  "pa-": {
+    "type": "boolean"
+  },
+  "pb-": {
+    "type": "boolean"
+  },
+  "pe-": {
+    "type": "boolean"
+  },
+  "ph-": {
+    "type": "boolean"
+  },
+  "pl-": {
+    "type": "boolean"
+  },
+  "po-": {
+    "type": "boolean"
+  },
+  "pr-": {
+    "type": "boolean"
+  },
+  "pt-": {
+    "type": "boolean"
+  },
+  "pv-": {
+    "type": "boolean"
+  },
+  "r-": {
+    "type": "boolean"
+  },
+  "sa-": {
+    "type": "boolean"
+  },
+  "t-": {
+    "type": "boolean"
+  },
+  "ta-": {
+    "type": "boolean"
+  },
+  "us-": {
+    "type": "boolean"
+  },
+  "vi-": {
+    "type": "boolean"
+  },
+  "z-": {
+    "type": "boolean"
+  }
+}

@@ -1,0 +1,50 @@
+/*
+ * @description 效果
+ * @author aodazhang 2022.05.09
+ */
+
+/****************************** 一.clip-path裁切 ******************************/
+
+// 1.路径：不会改变容器尺寸
+@mixin clipPathNormal($clipPath: inset(10px 10px)) {
+  -webkit-clip-path: $clipPath;
+  clip-path: $clipPath; // inset(长x 宽y) 矩形 | circle(半径 at 圆心x 圆心y) 圆形
+}
+
+// 2.svg：不会改变容器尺寸
+@mixin clipPathSvg($svgId: '#clip') {
+  -webkit-clip-path: url('#{$svgId}');
+  clip-path: url('#{$svgId}');
+}
+
+/****************************** 二.cursor鼠标手势 ******************************/
+
+// 1.系统
+@mixin cursorSystem($cursor: pointer) {
+  cursor: $cursor; // default默认箭头 | pointer可点击 | move移动
+}
+
+// 2.本地
+@mixin cursorLocale(
+  $baseUrl,
+  $imageName,
+  $imageExtension: 'png',
+  $cursor: default
+) {
+  cursor: url('#{$baseUrl}/#{$imageName}.#{$imageExtension}') $cursor;
+}
+
+// 3.网络
+@mixin cursorNetwork($url, $cursor: default) {
+  cursor: url('#{$url}') $cursor;
+}
+
+/****************************** 三.selection处理 ******************************/
+
+// 1.鼠标选中时(pc)
+@mixin selection($color: var(--aoda-color1), $backgroundColor: transparent) {
+  &::selection {
+    color: $color; // 选中文本颜色
+    background-color: $backgroundColor; // 选中背景颜色
+  }
+}

@@ -1,0 +1,13 @@
+/*
+ * @description mac/iphone亮暗模式适配
+ * @author aodazhang 2022.05.09
+ */
+@import '../setting/scssVariable.scss';
+
+@media #{$--mixins-light} {
+  // 亮色
+}
+
+@media #{$--mixins-dark} {
+  // 暗色
+}
