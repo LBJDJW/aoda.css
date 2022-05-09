@@ -16,22 +16,22 @@ npm i aoda.css -S
 
 2.Usage
 
-- **main.ts**：your project entry file
+- main.ts：your project entry file
 
   ```typescript
   import { createApp } from 'vue'
   import App from './App.vue'
-  // import aoda.css
+  // 1.import aoda.css
   import 'aoda.css'
 
   createApp(App).mount('#app')
   ```
 
-- **App.vue**
+- App.vue
 
   ```html
   <template>
-    <!-- using aoda.css attribute selector -->
+    <!-- 2.using aoda.css's attribute selector -->
     <div id="app" bg-5>
       <ul fl-r>
         <li co-2></li>
