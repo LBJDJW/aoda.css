@@ -4,8 +4,6 @@
 
 🎨 Lighter and faster atomic stylesheet, make writing css more enjoyable！
 
-<br />
-
 ## Installation and Usage
 
 1.Installation
@@ -31,8 +29,9 @@ npm i aoda.css -S
 
 - **App.vue**
 
-  ```html
+  ```vue
   <template>
+    <!-- using aoda.css attribute selector -->
     <div id="app" bg-5>
       <ul fl-r>
         <li co-2></li>
@@ -42,8 +41,6 @@ npm i aoda.css -S
     </div>
   </template>
   ```
-
-<br />
 
 ## Documentation and Changelog
 
