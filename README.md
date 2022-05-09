@@ -1,6 +1,6 @@
 # aoda.css
 
-[![sass](https://img.shields.io/badge/dart--sass-v1.51.0-orange?style=flat-square&logo=github)](https://github.com/sass/dart-sass) ![gzip](https://img.shields.io/badge/gzip-16.4kb-blue?style=flat-square&logo=github)
+[![sass](https://img.shields.io/badge/dart--sass-v1.51.0-orange?style=flat-square&logo=github)](https://github.com/sass/dart-sass) ![gzip](https://img.shields.io/badge/gzip-16.4kb-blue?style=flat-square)
 
 🎨 Lighter and faster atomic stylesheet, make writing css more enjoyable!
 
