@@ -2,7 +2,7 @@
 
 [![sass](https://img.shields.io/badge/dart--sass-v1.51.0-orange?style=flat-square&logo=github)](https://github.com/sass/dart-sass)
 
-🎨 Lighter and faster atomic stylesheet, make writing css more enjoyable！
+🎨 Lighter and faster atomic stylesheet, make writing css more enjoyable!
 
 ## Installation and Usage
 
@@ -29,7 +29,7 @@ npm i aoda.css -S
 
 - **App.vue**
 
-  ```vue
+  ```html
   <template>
     <!-- using aoda.css attribute selector -->
     <div id="app" bg-5>
