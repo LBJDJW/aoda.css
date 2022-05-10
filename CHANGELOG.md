@@ -4,7 +4,7 @@
 
 - **example:** 修复示例项目路由模式 ([53c5aed](https://github.com/aodazhang/aoda.css/commit/53c5aed3e2268bd21be9729676723b9dbb8006bb))
 
-# [1.0.0](https://github.com/aodazhang/aoda.css/compare/v0.0.1...v1.0.0) (2022-05-10)
+## [1.0.0](https://github.com/aodazhang/aoda.css/compare/v0.0.1...v1.0.0) (2022-05-10)
 
 ### Features
 
