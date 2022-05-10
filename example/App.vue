@@ -1,27 +1,17 @@
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition mode="out-in">
-      <keep-alive :exclude="excludeViews">
+    <animation-filp>
+      <keep-alive :exclude="exclude">
         <component :is="Component" :key="route.name" />
       </keep-alive>
-    </transition>
+    </animation-filp>
   </router-view>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import AnimationFilp from './components/animation-filp.vue'
+
 // 禁用keep-alive特性的页面
-const excludeViews = ['HomePage']
+const exclude = ref(['DetailPage'])
 </script>
-
-<style lang="scss" scoped>
-.v-enter-from,
-.v-leave-to {
-  transform: translateY(-50px);
-  opacity: 0;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s, transform 0.2s;
-}
-</style>

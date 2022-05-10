@@ -1,4 +1,37 @@
-* {
-  padding: 0;
-  margin: 0;
+@import '~@scss/index.scss';
+
+#app {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.g-page {
+  width: 100vw;
+  height: 100vh;
+}
+
+:root {
+  --aoda-color1: #fff;
+  --aoda-color2: #333;
+  --aoda-color3: #666;
+  --aoda-color4: #aaa;
+  --aoda-color5: #f3f4f7;
+  --aoda-color6: #5f9aff;
+}
+
+[data-theme='dark'] {
+  --aoda-color1: #262c34;
+  --aoda-color2: #fff;
+  --aoda-color5: #38404d;
+  --aoda-color6: #5f7aff;
+}
+
+@media #{$mixins-dark} {
+  :root {
+    --aoda-color1: #262c34;
+    --aoda-color2: #fff;
+    --aoda-color5: #38404d;
+    --aoda-color6: #5f7aff;
+  }
 }

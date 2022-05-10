@@ -1,8 +1,41 @@
-import { createPinia } from 'pinia'
-import commonStore from './modules/common'
-import userStore from './modules/user'
+import { createPinia, defineStore } from 'pinia'
 
 const store = createPinia()
 
-export { commonStore, userStore }
+const commonStore = defineStore('common', {
+  state: () => ({
+    env: PROJECT_ENV,
+    version: PROJECT_VERSION,
+    buildTime: PROJECT_BUILDTIME,
+    list: [] as string[]
+  }),
+
+  actions: {
+    async init() {
+      this.$patch({
+        list: [
+          '🍇',
+          '🍈',
+          '🍉',
+          '🍊',
+          '🍋',
+          '🍌',
+          '🍍',
+          '🥭',
+          '🍎',
+          '🍏',
+          '🍐',
+          '🍑',
+          '🍒',
+          '🍓',
+          '🥝',
+          '🍅',
+          '🥥'
+        ]
+      })
+    }
+  }
+})
+
+export { commonStore }
 export default store

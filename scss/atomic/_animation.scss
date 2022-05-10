@@ -1,6 +1,6 @@
 /*
  * @description 动画
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 @import '../setting/scssVariable.scss';
 @import '../mixins/index.scss';
@@ -9,9 +9,9 @@
 
 // 命名规则：{hb、hc、ab、ac}-数值
 // 示例：hb-1 -> background-color: var(--aoda-color1);
-@for $i from 1 through $--atomic-color {
+@for $i from 1 through $atomic-color {
   [hb-#{$i}] {
-    @include cursorSystem;
+    @include cursor;
     @include transition(background-color, 0.2s);
 
     &:hover {
@@ -20,7 +20,7 @@
   }
 
   [hc-#{$i}] {
-    @include cursorSystem;
+    @include cursor;
     @include transition(color, 0.2s);
 
     &:hover {
@@ -29,7 +29,7 @@
   }
 
   [ab-#{$i}] {
-    @include cursorSystem;
+    @include cursor;
     @include transition(background-color, 0.2s);
 
     &:active {
@@ -38,7 +38,7 @@
   }
 
   [ac-#{$i}] {
-    @include cursorSystem;
+    @include cursor;
     @include transition(color, 0.2s);
 
     &:active {

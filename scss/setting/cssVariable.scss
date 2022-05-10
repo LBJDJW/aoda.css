@@ -1,19 +1,19 @@
 /*
  * @description css变量
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 
 :root {
   // 1.颜色
   --aoda-color1: #fff;
-  --aoda-color2: #292929;
-  --aoda-color3: #6e6e6e;
-  --aoda-color4: #a1a6b6;
+  --aoda-color2: #333;
+  --aoda-color3: #666;
+  --aoda-color4: #aaa;
   --aoda-color5: #f3f4f7;
   --aoda-color6: #3b7ff3;
   --aoda-color7: #fff;
-  --aoda-color8: #292929;
-  --aoda-color9: rgba(160, 164, 172, 0.2);
+  --aoda-color8: #fff;
+  --aoda-color9: #fff;
   --aoda-color10: #fff;
   --aoda-color11: #fff;
   --aoda-color12: #fff;
@@ -27,16 +27,16 @@
   --aoda-color20: #fff;
 
   // 2.字体
-  --aoda-fontFamily1: 'PingFangSC-Medium', 'PingFang SC', -apple-system,
+  --aoda-font-family1: 'PingFangSC-Medium', 'PingFang SC', -apple-system,
     blinkmacsystemfont, 'Helvetica Neue', helvetica, segoe ui, arial, roboto,
     'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
-  --aoda-fontFamily2: avenir-heavy, 'PingFang SC', 'Helvetica Neue', arial,
+  --aoda-font-family2: avenir-heavy, 'PingFang SC', 'Helvetica Neue', arial,
     sans-serif;
 
   // 3.字号
-  --aoda-fontSize1: 32px;
-  --aoda-fontSize2: 40px;
+  --aoda-font-size1: 16px;
+  --aoda-font-size2: 20px;
 
   // 4.行高
-  --aoda-lineHeight: normal;
+  --aoda-line-height1: normal;
 }

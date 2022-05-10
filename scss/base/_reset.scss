@@ -1,6 +1,6 @@
 /*
  * @description css重置
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 
 // 1.document
@@ -8,39 +8,37 @@ html {
   // 设置css字体抗锯齿
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // 禁止移动端浏览器旋转屏幕时改变字体大小
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+
   // 解决移动端触摸元素出现半透明灰色遮罩
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+
+  // 解决苹果设备滚动不流畅
+  -webkit-overflow-scrolling: touch;
+
+  // 禁止移动端浏览器旋转屏幕时改变字体大小
+  text-size-adjust: 100%;
+
   // 默认字色
   color: var(--aoda-color2);
+
   // 默认字宽
   font-weight: normal;
+
   // 默认字号
-  font-size: var(--aoda-fontSize1);
+  font-size: var(--aoda-font-size1);
+
   // 默认字体
-  font-family: var(--aoda-fontFamily1);
+  font-family: var(--aoda-font-family1);
+
   // 默认字行高：normal兼容安卓
-  line-height: var(--aoda-lineHeight);
+  line-height: var(--aoda-line-height1);
+
   // 解决新版chorme默认行为报错问题：触摸事件都不会产生默认行为，但是touch事件照样触发
   touch-action: none;
 }
 
-// 2.body
-body {
-  // 解决苹果设备滚动不流畅
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-// 3.常见块、行内
+// 2.常见块、行内
+body,
 div,
 section,
 header,
@@ -62,14 +60,16 @@ span {
   font-size: inherit;
 }
 
+h1,
 h2 {
   // 标题字重
   font-weight: bold;
+
   // 标题字号
-  font-size: var(--aoda-fontSize2);
+  font-size: var(--aoda-font-size2);
 }
 
-// 4.有序、无序列表
+// 3.有序、无序列表
 ol,
 ul,
 li {
@@ -78,7 +78,7 @@ li {
   list-style: none;
 }
 
-// 5.媒体
+// 4.媒体
 svg,
 video,
 canvas,
@@ -91,24 +91,24 @@ object {
 }
 
 img {
-  // 修正图片标签在IE上的显示：解决IE浏览器缩放图片失真
-  -ms-interpolation-mode: bicubic;
   display: block;
   width: 100%;
   height: 100%;
+
   // 图片按比例铺满容器
   object-fit: cover;
+
   // 图片内容采用 center 方式进行居中
   object-position: center;
   border: none;
 }
 
-// 6.超链接
+// 5.超链接
 a {
   // 修正链接标签的下划线样式
   text-decoration: none; // 移除链接标签默认的下划线
   // 指定内联文字的下划线
-  -webkit-text-decoration-skip: objects; // 删除iOS8+和Safari8+中下划线链接的间隙
+  text-decoration-skip: objects; // 删除iOS8+和Safari8+中下划线链接的间隙
   background-color: transparent; // 移除IE10中活动链接标签上的灰色背景
 
   &:active,
@@ -118,7 +118,7 @@ a {
   }
 }
 
-// 7.代码
+// 6.代码
 code,
 kbd,
 samp {
@@ -126,7 +126,7 @@ samp {
   font-family: monospace;
 }
 
-// 8.表单
+// 7.表单
 input {
   margin: 0;
   padding: 0;
@@ -152,7 +152,6 @@ button [type='button'],
 [type='reset'],
 [type='submit'] {
   // 修正按钮标签/类型button、reset、submit的显示问题（Android4-）：指定元素以按钮形式呈现
-  -webkit-appearance: button;
   appearance: button;
 }
 
@@ -189,21 +188,18 @@ button:-moz-focusring,
 [type='search'] {
   // 修正属性type为search的标签以文本框形式呈现和outline样式（Chrome、Safari）
   outline-offset: -2px;
-  -webkit-appearance: textfield;
   appearance: textfield;
 }
 
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {
   // 修正属性type为search的标签内部填充取消按钮样式（Chrome、Safari）
-  -webkit-appearance: none;
   appearance: none;
 }
 
 ::-webkit-file-upload-button {
   // 修正input上传文件按钮和文字样式（Safari）
   font: inherit;
-  -webkit-appearance: button;
   appearance: button;
 }
 

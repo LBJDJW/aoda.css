@@ -1,15 +1,14 @@
 /*
  * @description 盒模型
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 @import '../setting/scssVariable.scss';
-@import '../mixins/index.scss';
 
 /****************************** 一.盒模型 ******************************/
 
 // 命名规则：bs-类型
 // 示例：bs-b -> box-sizing: border-box;
-@each $key, $value in $--atomic-box-sizing {
+@each $key, $value in $atomic-box-sizing {
   [bs-#{$key}] {
     box-sizing: $value;
   }
@@ -19,8 +18,8 @@
 
 // 命名规则：{pa、ph、pv、pt、pb、pl、pr、ma、mh、mv、mt、mb、ml、mr}-数值
 // 示例：pa-10 -> padding: 10px;
-@each $key, $value in $--atomic-edge {
-  @for $i from 1 through $--atomic-size {
+@each $key, $value in $atomic-edge {
+  @for $i from 0 through $atomic-size {
     [#{$key}a-#{$i}] {
       #{$value}: #{$i}px;
     }
@@ -95,11 +94,10 @@
 
 // 命名规则：fl-主轴类型
 // 示例：fl-r -> flex-flow: row nowrap;
-@each $key, $value in $--atomic-flex-direction {
+@each $key, $value in $atomic-flex-direction {
   [fl-#{$key}] {
     display: flex;
-    flex-direction: $value;
-    flex-wrap: nowrap;
+    flex-flow: $value nowrap;
     align-items: center;
     justify-content: flex-start;
   }
@@ -107,7 +105,7 @@
 
 // 命名规则：fl-fw换行类型
 // 示例：fl-fwn -> flex-wrap: row nowrap;
-@each $key, $value in $--atomic-flex-wrap {
+@each $key, $value in $atomic-flex-wrap {
   [fl-fw#{$key}] {
     flex-wrap: $value;
   }
@@ -115,7 +113,7 @@
 
 // 命名规则：fl-{jc、ai、ac}轴对齐类型
 // 示例：fl-jcc -> justify-content: center;
-@each $key, $value in $--atomic-flex-content {
+@each $key, $value in $atomic-flex-content {
   [fl-jc#{$key}] {
     justify-content: $value;
   }

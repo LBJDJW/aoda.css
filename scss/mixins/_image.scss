@@ -1,13 +1,13 @@
 /*
  * @description 图片
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 @import '../setting/scssVariable.scss';
 
 /****************************** 一.background-image图片 ******************************/
 
 // 1.本地资源
-@mixin imageLocal(
+@mixin image-locale(
   $baseUrl,
   $imageName,
   $backgroundSize: cover,
@@ -20,7 +20,7 @@
 }
 
 // 2.网络资源
-@mixin imageNetwork($url, $backgroundSize: cover) {
+@mixin image-network($url, $backgroundSize: cover) {
   background-image: url('#{$url}');
   background-repeat: no-repeat;
   background-position: center center;
@@ -28,16 +28,16 @@
 }
 
 // 3.根据dpr适配2x、3x资源
-@mixin imageDpr(
+@mixin image-dpr(
   $baseUrl,
   $imageName,
   $backgroundSize: cover,
   $imageExtension: 'png'
 ) {
-  @include imageLocal($baseUrl, $imageName, $backgroundSize, $imageExtension);
+  @include image-locale($baseUrl, $imageName, $backgroundSize, $imageExtension);
 
-  @media #{$--mixins-dpr2} {
-    @include imageLocal(
+  @media #{$mixins-dpr2} {
+    @include image-locale(
       $baseUrl,
       '#{$imageName}@2x',
       $backgroundSize,
@@ -45,8 +45,8 @@
     );
   }
 
-  @media #{$--mixins-dpr3} {
-    @include imageLocal(
+  @media #{$mixins-dpr3} {
+    @include image-locale(
       $baseUrl,
       '#{$imageName}@3x',
       $backgroundSize,
@@ -58,18 +58,18 @@
 /****************************** 二.background-image渐变 ******************************/
 
 // 1.双色线性渐变
-@mixin gradientLinear(
+@mixin gradient-linear(
   $leftColor: #ffa751,
   $rightColor: #ffe259,
   $angle: 90deg
 ) {
-  // angle | left/right | top/bottom
   // TODO 多个属性值拼接
+  // angle | left/right | top/bottom
   background-image: linear-gradient($angle, $leftColor, $rightColor);
 }
 
 // 2.重复线性渐变
-@mixin gradientRepeating($repeatColor: #ffa751, $angle: 45deg) {
+@mixin gradient-repeating($repeatColor: #ffa751, $angle: 45deg) {
   // TODO 多个属性值拼接
   background-image: repeating-linear-gradient(
     $angle,
@@ -81,7 +81,7 @@
 }
 
 // 3.双色径向渐变
-@mixin gradientRadial(
+@mixin gradient-radial(
   $insideColor: #ffa751,
   $outsideColor: #ffe259,
   $shape: circle,
@@ -99,7 +99,7 @@
 /****************************** 三.img标签图片 ******************************/
 
 // 1.img标签适配
-@mixin imgFit($objectFit: cover) {
+@mixin img-fit($objectFit: cover) {
   object-fit: $objectFit; // cover 保持图片比例铺满容器 | contain 保持图片比例在容器完整显示图片
   object-position: center;
 }

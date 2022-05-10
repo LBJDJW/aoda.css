@@ -1,12 +1,12 @@
 /*
  * @description 布局
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 
 /****************************** 一.清除浮动 ******************************/
 
 // 1.清除浮动
-@mixin clearFloat($clear: both) {
+@mixin clear-float($clear: both) {
   *zoom: 1;
 
   &::after {
@@ -21,12 +21,12 @@
 /****************************** 二.垂直居中 **************************/
 
 // 1.flex实现
-@mixin centerFlex {
+@mixin center-flex {
   @include flex(center);
 }
 
 // 2.absolute实现
-@mixin centerPosition {
+@mixin center-position {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -45,7 +45,6 @@
   $columnRuleColor: rgb(0, 0, 0),
   $columnFill: auto
 ) {
-  -webkit-columns: $columnWidth $columnCount;
   columns: $columnWidth $columnCount; // columns列宽/列数(auto | number)
   column-fill: $columnFill; // columns列高度指定(auto本列内容决定 | balance内容最多的列决定)
   column-gap: $columnGap; // columns列间距(normal 1em | number)
@@ -53,8 +52,7 @@
 }
 
 // 2.元素
-@mixin columnItem($columnSpan: none) {
-  -webkit-column-span: $columnSpan;
+@mixin column-item($columnSpan: none) {
   column-span: $columnSpan; // columns中某一列是否跨列(none | all)
 }
 
@@ -68,7 +66,6 @@
   $alignItems: center,
   $alignContent: stretch
 ) {
-  display: -webkit-flex;
   display: flex;
   flex-flow: $flexDirection $flexWrap; // flex-item排列方向(row | row-reverse | column | column-reverse) 换行方式(nowrap | wrap | wrap-reverse)
   align-content: $alignContent; // flex-item多交叉轴对齐方式(flex-start | flex-end | center | space-between | space-around | stretch)
@@ -77,7 +74,7 @@
 }
 
 // 2.元素
-@mixin flexItem(
+@mixin flex-item(
   $flexGrow: 1,
   $flexShrink: 1,
   $flexBasis: auto,
@@ -115,7 +112,7 @@
 }
 
 // 2.元素
-@mixin gridItem(
+@mixin grid-item(
   $columnSpan: 1,
   $rowSpan: 1,
   $display: inline-grid,

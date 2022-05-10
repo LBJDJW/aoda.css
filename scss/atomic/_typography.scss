@@ -1,6 +1,6 @@
 /*
  * @description 排版
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 @import '../setting/scssVariable.scss';
 @import '../mixins/index.scss';
@@ -9,7 +9,7 @@
 
 // 命名规则：fs-数值
 // 示例：fs-12 -> font-size: 12px;
-@for $i from 12 through $--atomic-font-size {
+@for $i from 12 through $atomic-font-size {
   [fs-#{$i}] {
     font-size: #{$i}px;
   }
@@ -19,7 +19,7 @@
 
 // 命名规则：fw-类型
 // 示例：fw-400 -> font-weight: 400;
-@each $key, $value in $--atomic-font-weight {
+@each $key, $value in $atomic-font-weight {
   [fw-#{$key}] {
     font-weight: $value;
   }
@@ -29,7 +29,7 @@
 
 // 命名规则：lh-数值
 // 示例：lh-15 -> line-height: 1.5;
-@each $key, $value in $--atomic-line-height {
+@each $key, $value in $atomic-line-height {
   [lh-#{$key}] {
     line-height: $value;
   }
@@ -39,7 +39,7 @@
 
 // 命名规则：ta-类型
 // 示例：ta-s -> text-align: start;
-@each $key, $value in $--atomic-text-align {
+@each $key, $value in $atomic-text-align {
   [ta-#{$key}] {
     text-align: $value;
   }
@@ -49,18 +49,18 @@
 
 // 命名规则：co-数值
 // 示例：co-1 -> color: var(--aoda-color1);
-@for $i from 1 through $--atomic-color {
+@for $i from 1 through $atomic-color {
   [co-#{$i}] {
     color: var(--aoda-color#{$i});
   }
 }
 
-/****************************** 六.字省略号 ******************************/
+/****************************** 六.字指定行数 ******************************/
 
 // 命名规则：nw-数值
-// 示例：nw-1 -> @fontNoWrap(1);
-@for $i from 1 through $--atomic-line {
+// 示例：nw-1 -> @font-nowrap(1);
+@for $i from 1 through $atomic-line {
   [nw-#{$i}] {
-    @include fontNoWrap($i);
+    @include font-nowrap($i);
   }
 }

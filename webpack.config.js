@@ -1,6 +1,6 @@
 /**
  * @description webpack5单页应用配置文件
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  * @extends https://webpack.docschina.org/configuration/
  */
 const path = require('path')
@@ -8,7 +8,7 @@ const path = require('path')
 // 一.webpack插件
 const { DefinePlugin } = require('webpack')
 const { merge } = require('webpack-merge')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 构建前清除文件夹
+const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 清除文件
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 根据模板生成html
 const CopyWebpackPlugin = require('copy-webpack-plugin') // 复制文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 提取css
@@ -40,7 +40,7 @@ const isSourceMap = false
 const isDropConsole = false
 
 // 三.webpack配置
-/** css通用loader配置 */
+/** css通用loader */
 const cssLoader = [
   {
     loader: 'css-loader',
@@ -56,10 +56,10 @@ const cssLoader = [
 /** 基础配置 */
 const baseConfig = {
   performance: {
-    hints: false // 关闭webpack打包警告(例如某个资源超过250kb)
+    hints: false // 关闭webpack打包警告（例如某个资源超过250kb）
   },
   cache: {
-    type: 'filesystem' // 设置webpack使用磁盘缓存
+    type: 'filesystem' // webpack使用磁盘缓存
   },
   entry: {
     index: `${entryPath}/index.ts`
@@ -77,7 +77,7 @@ const baseConfig = {
       '@scss': scssEntryPath,
       crypto: false // webpack5中移除了nodejs核心模块的polyfill自动引入，需要手动引入
     },
-    // 默认扩展名：.js必须存在，否则node_modules文件解析有问题
+    // 默认扩展名：.js必须存在，否则node_modules中的文件无法解析
     extensions: ['.ts', '.js', '.vue']
   },
   plugins: [
@@ -94,8 +94,8 @@ const baseConfig = {
       ]
     }),
     new HtmlWebpackPlugin({
-      template: `${entryPath}/index.html`, // html 模板位置
-      favicon: `${entryPath}/favicon.ico`, // html favicon位置
+      template: `${entryPath}/index.html`, // html模板位置
+      favicon: `${entryPath}/favicon.ico`, // favicon位置
       filename: `index.html`, // html生成模板名
       chunks: [`index`], // 匹配entry的key
       title: `${require('./package.json').name}`, // html标题
@@ -114,12 +114,19 @@ const baseConfig = {
     new CopyWebpackPlugin({
       patterns: [
         {
+          // scss源代码拷贝到dist
           from: scssEntryPath, // 指定要拷贝的文件夹
           to: distPath // 拷贝到dist目录下
         },
         {
+          // scss构建产物拷贝到dist
           from: `${scssOutputPath}/index.css`,
           to: distPath
+        },
+        {
+          // scss构建产物拷贝到dist-example
+          from: `${scssOutputPath}/index.css`,
+          to: outputPath
         }
       ]
     }),
@@ -144,7 +151,7 @@ const baseConfig = {
         },
         parser: {
           dataUrlCondition: {
-            maxSize: 0 * 1024 // 0kb以下base64发送(asset/inline)、0kb以上url发送(asset/resource)
+            maxSize: 0 * 1024 // 0kb以下base64发送（asset/inline）、0kb以上url发送（asset/resource）
           }
         }
       },
@@ -181,8 +188,8 @@ const baseConfig = {
           test: /node_modules/,
           name: 'node_modules',
           priority: 1, // 拆分权重：优先级1
-          minSize: 0 * 1024, // 拆分最小体积(进行拆分js文件的最小体积)：>=0kb拆分
-          minChunks: 1 // 拆分最小复用(进行拆分js文件的最少import次数)：>=1次拆分
+          minSize: 0 * 1024, // 拆分最小体积（进行拆分js文件的最小体积）：>=0kb拆分
+          minChunks: 1 // 拆分最小复用（进行拆分js文件的最少import次数）：>=1次拆分
         },
         // common组规则
         common: {
@@ -208,6 +215,7 @@ const devConfig = {
     static: {
       directory: outputPath // 静态文件目录
     },
+    historyApiFallback: true, // 支持单页应用history路由fallback
     port: 3000, // 启动端口号
     open: false, // 禁止自动打开浏览器
     hot: false, // 开启热模块重载功能hmr
@@ -243,8 +251,8 @@ const prodConfig = {
     new CompressionWebpackPlugin({
       test: /\.(html|css|js)$/, // 匹配文件类型
       algorithm: 'gzip', // 压缩算法
-      threshold: 0 * 1024, // gzip压缩大小阈值(kb)：文件大小>0kb执行压缩
-      minRatio: 0.8, // gzip压缩比率阈值(%)：文件压缩阈值<0.8执行压缩
+      threshold: 0 * 1024, // gzip压缩大小阈值（kb）：文件大小>0kb执行压缩
+      minRatio: 0.8, // gzip压缩比率阈值（%）：文件压缩阈值<0.8执行压缩
       deleteOriginalAssets: false, // 不删除原始文件
       filename: '[path][base].gz' // gizp生成文件名
     }),

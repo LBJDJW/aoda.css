@@ -1,14 +1,14 @@
 /*
  * @description dpr适配
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  * @see 由上->下依次匹配
  */
 @import '../setting/scssVariable.scss';
 
-@media #{$--mixins-dpr2} {
+@media #{$mixins-dpr2} {
   // dpr2
 }
 
-@media #{$--mixins-dpr3} {
+@media #{$mixins-dpr3} {
   // dpr3
 }

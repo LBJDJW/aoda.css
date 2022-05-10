@@ -1,14 +1,17 @@
 <template>
-  <div class="home">
-    <h1>{{ title }}</h1>
-    <p>令牌：{{ user.token }}</p>
-    <p>姓名：{{ user.name }}</p>
-    <p>page_1</p>
-    <img
-      src="http://5b0988e595225.cdn.sohucs.com/images/20190423/5105ccb94a1a4b3cb97ad6a94221b6c5.jpeg"
-    />
-    <p>构建时间：{{ buildTime }}</p>
-    <button @click="onClickDetail">跳转详情页</button>
+  <div class="g-page" po-a z-0 fl-c fl-ais>
+    <NavBar fl-0 />
+    <ul id="homeList" fl-1 fl-r fl-fww fl-acfs ov-y pb-100 bg-5>
+      <list-card
+        v-for="(item, index) of list"
+        :key="index"
+        :item="item"
+        @click="onClickDetail(($event.currentTarget as HTMLElement).getBoundingClientRect(), item)"
+      />
+    </ul>
+    <footer pv-10 fs-12 fw-b ta-c bg-1>
+      v{{ version }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ buildTime }}
+    </footer>
   </div>
 </template>
 
@@ -19,32 +22,23 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { userStore } from '../store'
+import { storeToRefs } from 'pinia'
+import { commonStore } from '@example/store'
+import NavBar from '@example/components/nav-bar.vue'
+import ListCard from '@example/components/list-card.vue'
 
 const router = useRouter()
-const user = userStore()
+const common = commonStore()
+const { version, buildTime, list } = storeToRefs(common)
 
-onMounted(() => {
-  user.login()
-})
+common.init()
 
-const title = ref('首页')
-const onClickDetail = () => router.push({ name: 'detail' })
-// eslint-disable-next-line
-const buildTime = PROJECT_BUILDTIME
-</script>
-
-<style lang="scss" scoped>
-.home {
-  width: 100vw;
-  height: 100vh;
-
-  img {
-    display: block;
-    width: 200px;
-    height: 200px;
-  }
+function onClickDetail(rect: DOMRect, item: string) {
+  router.push({
+    name: 'detail',
+    query: { item },
+    params: { top: rect.top, left: rect.left, width: rect.width }
+  })
 }
-</style>
+</script>

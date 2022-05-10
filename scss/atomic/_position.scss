@@ -1,15 +1,14 @@
 /*
  * @description 定位
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 @import '../setting/scssVariable.scss';
-@import '../mixins/index.scss';
 
 /****************************** 一.定位 ******************************/
 
 // 命名规则：po-类型
 // 示例：po-r -> position: relative;
-@each $key, $value in $--atomic-position {
+@each $key, $value in $atomic-position {
   [po-#{$key}] {
     position: $value;
   }
@@ -19,7 +18,7 @@
 
 // 命名规则：z-数值
 // 示例：z-100 -> z-index: 100;
-@each $key in $--atomic-zindex {
+@each $key in $atomic-zindex {
   [z-#{$key}] {
     z-index: $key;
   }
@@ -29,8 +28,8 @@
 
 // 命名规则：{t、b、l、r}-数值
 // 示例：t-20 -> top: 20px;
-@each $key, $value in $--atomic-direction {
-  @for $i from 1 through $--atomic-location {
+@each $key, $value in $atomic-direction {
+  @for $i from 0 through $atomic-location {
     [#{$key}-#{$i}] {
       #{$value}: #{$i}px;
     }

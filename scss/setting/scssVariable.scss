@@ -1,49 +1,65 @@
 /*
  * @description scss变量
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 
 /****************************** 一.mixins参数 ******************************/
 
 // 媒体查询：576px-
-$--mixins-xs: 'only screen and (max-width: 575px)';
+$mixins-xs: 'only screen and (max-width: 575px)';
+
 // 媒体查询：576px+
-$--mixins-sm: 'only screen and (min-width: 576px) and (max-widht: 767px)';
+$mixins-sm: 'only screen and (min-width: 576px) and (max-width: 767px)';
+
 // 媒体查询：768px+
-$--mixins-md: 'only screen and (min-width: 768px) and (max-width: 991px)';
+$mixins-md: 'only screen and (min-width: 768px) and (max-width: 991px)';
+
 // 媒体查询：992px+
-$--mixins-lg: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$mixins-lg: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+
 // 媒体查询：1200px+
-$--mixins-xl: 'only screen and (min-width: 1200px) and (max-width: 1399px)';
+$mixins-xl: 'only screen and (min-width: 1200px) and (max-width: 1399px)';
+
 // 媒体查询：1400px+
-$--mixins-xxl: 'only screen and (min-width: 1400px)';
+$mixins-xxl: 'only screen and (min-width: 1400px)';
+
 // 媒体查询：dpr3
-$--mixins-dpr3: 'only screen and (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)';
+$mixins-dpr3: 'only screen and (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)';
+
 // 媒体查询：dpr2
-$--mixins-dpr2: 'only screen and (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2)';
+$mixins-dpr2: 'only screen and (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2)';
+
 // 媒体查询：亮色模式（mac/iphone亮暗适配）
-$--mixins-light: 'only screen and (prefers-color-scheme: light)';
+$mixins-light: 'only screen and (prefers-color-scheme: light)';
+
 // 媒体查询：暗色模式（mac/iphone亮暗适配）
-$--mixins-dark: 'only screen and (prefers-color-scheme: dark)';
+$mixins-dark: 'only screen and (prefers-color-scheme: dark)';
 
 /****************************** 二.atomic参数 ******************************/
 
 // 颜色：1 ~ 20色号
-$--atomic-color: 20 !default;
-// 位置：1px ~ 120px
-$--atomic-location: 120 !default;
-// 边距：1px ~ 120px
-$--atomic-size: 120 !default;
-// 边框倒角：1px ~ 60px
-$--atomic-border: 60 !default;
+$atomic-color: 20 !default;
+
+// 位置：0px ~ 100px
+$atomic-location: 100 !default;
+
+// 边距：0px ~ 100px
+$atomic-size: 100 !default;
+
+// 边框倒角：0px ~ 60px
+$atomic-border: 60 !default;
+
 // 字号：12px ~ 72px
-$--atomic-font-size: 72 !default;
+$atomic-font-size: 72 !default;
+
 // 文字行数：1 ~ 6
-$--atomic-line: 6 !default;
+$atomic-line: 6 !default;
+
 // z-index：0 ~ 1000
-$--atomic-zindex: (0, 1, 2, 3, 4, 5, 10, 100, 1000) !default;
+$atomic-zindex: (0, 1, 2, 3, 4, 5, 10, 100, 1000) !default;
+
 // 不透明度：0 ~ 1
-$--atomic-opacity: (
+$atomic-opacity: (
   '0': 0,
   '1': 0.1,
   '2': 0.2,
@@ -56,28 +72,33 @@ $--atomic-opacity: (
   '9': 0.9,
   '10': 1
 ) !default;
+
 // 盒模型
-$--atomic-box-sizing: (
+$atomic-box-sizing: (
   'c': content-box,
   'b': border-box
 ) !default;
+
 // 盒边距
-$--atomic-edge: (
+$atomic-edge: (
   'p': padding,
   'm': margin
 ) !default;
+
 // 可见性
-$--atomic-visibility: (
+$atomic-visibility: (
   'h': hidden,
   'v': visible
 ) !default;
+
 // 图片适配
-$--atomic-object-fit: (
+$atomic-object-fit: (
   'cr': cover,
   'cn': contain
 ) !default;
+
 // 字重
-$--atomic-font-weight: (
+$atomic-font-weight: (
   '100': 100,
   '200': 200,
   '300': 300,
@@ -92,8 +113,9 @@ $--atomic-font-weight: (
   'b': bold,
   'bo': bolder
 ) !default;
+
 // 字行高
-$--atomic-line-height: (
+$atomic-line-height: (
   '1': 1,
   '11': 1.1,
   '12': 1.2,
@@ -103,42 +125,48 @@ $--atomic-line-height: (
   '2': 2,
   'n': normal
 ) !default;
+
 // 字对齐
-$--atomic-text-align: (
+$atomic-text-align: (
   's': start,
   'c': center,
   'e': end,
   'l': left,
   'r': right
 ) !default;
+
 // 定位：相对、绝对、固定、粘性
-$--atomic-position: (
+$atomic-position: (
   'r': relative,
   'a': absolute,
   'f': fixed,
   's': sticky
 ) !default;
+
 // 方向：上、下、左、右
-$--atomic-direction: (
+$atomic-direction: (
   't': top,
   'b': bottom,
   'l': left,
   'r': right
 ) !default;
+
 // flex主轴方向
-$--atomic-flex-direction: (
+$atomic-flex-direction: (
   'r': row,
   'rr': row-reverse,
   'c': column,
   'cr': column-reverse
 ) !default;
+
 // flex主轴换行
-$--atomic-flex-wrap: (
+$atomic-flex-wrap: (
   'n': nowrap,
   'w': wrap
 ) !default;
+
 // flex轴对齐
-$--atomic-flex-content: (
+$atomic-flex-content: (
   'fs': flex-start,
   'fe': flex-end,
   'c': center,

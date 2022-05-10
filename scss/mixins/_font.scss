@@ -1,14 +1,14 @@
 /*
  * @description 字体
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 
 // 1.字体尺寸：字号、字行高、对齐方式、字宽、字间距
-@mixin fontSize(
-  $fontSize: var(--aoda-fontSize1),
+@mixin font-size(
+  $fontSize: var(--aoda-font-size1),
   $textAlign: start,
   $fontWeight: normal,
-  $lineHeight: var(--aoda-lineHeight),
+  $lineHeight: var(--aoda-line-height1),
   $wordWrap: break-word,
   $wordBreak: break-all,
   $wordSpacing: normal
@@ -23,7 +23,7 @@
 }
 
 // 2.字体样式：字风格、字首行缩进、字修饰、字大小写转换
-@mixin fontStyle(
+@mixin font-style(
   $fontStyle: normal,
   $textIndent: 0,
   $textDecoration: none,
@@ -36,14 +36,15 @@
 }
 
 // 3.字体颜色：字色、字体阴影
-@mixin fontColor($color: var(--aoda-color1), $textShadow: 0 0 0 transparent) {
+@mixin font-color($color: var(--aoda-color2), $textShadow: 0 0 0 transparent) {
   color: $color;
+
   // TODO 多个属性值拼接
   text-shadow: $textShadow;
 }
 
 // 4.文本省略号
-@mixin fontNoWrap($line: 1) {
+@mixin font-nowrap($line: 1) {
   @if $line==1 {
     overflow: hidden !important;
     white-space: nowrap !important; // 文本空白处不换行
@@ -51,9 +52,10 @@
   }
 
   @if $line>1 {
+    /* stylelint-disable-next-line */
     display: -webkit-box; // 作为弹性伸缩盒显示
     -webkit-box-orient: vertical; // 设置或检索伸缩盒对象的子元素的排列方式
-    -webkit-line-clamp: $line; //设定行数，超出行数则省略，只webkit有效
+    -webkit-line-clamp: $line; // 设定行数，超出行数则省略，只webkit有效
     overflow: hidden !important;
     white-space: normal !important; // 文本空白处换行
     text-overflow: ellipsis !important; // 文本超出宽度省略号

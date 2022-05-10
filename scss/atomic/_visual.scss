@@ -1,6 +1,6 @@
 /*
  * @description 视觉
- * @author aodazhang 2022.05.09
+ * @author aodazhang 2022.05.10
  */
 @import '../setting/scssVariable.scss';
 @import '../mixins/index.scss';
@@ -9,7 +9,7 @@
 
 // 命名规则：bg-数值
 // 示例：bg-1 -> background-color: var(--aoda-color1);
-@for $i from 1 through $--atomic-color {
+@for $i from 1 through $atomic-color {
   [bg-#{$i}] {
     background-color: var(--aoda-color#{$i});
   }
@@ -19,7 +19,7 @@
 
 // 命名规则：{ba、bt、bb}-数值
 // 示例：bb-1 -> border-bottom: 1px solid var(--aoda-color1);
-@for $i from 1 through $--atomic-color {
+@for $i from 1 through $atomic-color {
   [ba-#{$i}] {
     border: 1px solid var(--aoda-color#{$i});
   }
@@ -37,7 +37,7 @@
 
 // 命名规则：bs-数值
 // 示例：bs-1 -> box-shadow: 0 10px 15px 1px var(--aoda-color1);
-@for $i from 1 through $--atomic-color {
+@for $i from 1 through $atomic-color {
   [bs-#{$i}] {
     box-shadow: 0 10px 15px 1px var(--aoda-color#{$i});
   }
@@ -47,7 +47,7 @@
 
 // 命名规则：op-数值
 // 示例：op-1 -> opacity: 0.1;
-@each $key, $value in $--atomic-opacity {
+@each $key, $value in $atomic-opacity {
   [op-#{$key}] {
     opacity: $value;
   }
@@ -57,7 +57,7 @@
 
 // 命名规则：br-数值
 // 示例：br-5 -> border-radius: 5px;
-@for $i from 1 through $--atomic-border {
+@for $i from 0 through $atomic-border {
   [br-#{$i}] {
     border-radius: #{$i}px;
   }
@@ -71,7 +71,7 @@
 
 // 命名规则：vi-类型
 // 示例：vi-h -> visibility: hidden;
-@each $key, $value in $--atomic-visibility {
+@each $key, $value in $atomic-visibility {
   [vi-#{$key}] {
     visibility: $value;
   }
@@ -82,15 +82,15 @@
 // 命名规则：cu-类型
 // 示例：cu-p -> cursor: pointer;
 [cu-p] {
-  @include cursorSystem;
+  @include cursor;
 }
 
 /****************************** 八.img图片适配 ******************************/
 
 // 命名规则：of-类型
 // 示例：of-cr -> object-fit: cover;
-@each $key, $value in $--atomic-object-fit {
+@each $key, $value in $atomic-object-fit {
   [of-#{$key}] {
-    @include imgFit($value);
+    @include img-fit($value);
   }
 }
