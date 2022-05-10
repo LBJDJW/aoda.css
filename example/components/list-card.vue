@@ -15,7 +15,7 @@ defineProps<{ item: string }>()
 <style lang="scss" scoped>
 .list-card {
   width: 170px;
-  height: 170px;
+  height: 190px;
 
   div {
     height: 12px;

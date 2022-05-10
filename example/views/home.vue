@@ -9,7 +9,7 @@
         @click="onClickDetail(($event.currentTarget as HTMLElement).getBoundingClientRect(), item)"
       />
     </ul>
-    <footer pv-10 fs-12 fw-b ta-c bg-1>
+    <footer fl-0 fl-r fl-jcc sa-b fs-12 fw-b bg-1>
       v{{ version }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ buildTime }}
     </footer>
   </div>
@@ -42,3 +42,9 @@ function onClickDetail(rect: DOMRect, item: string) {
   })
 }
 </script>
+
+<style lang="scss" scoped>
+footer {
+  height: 36px;
+}
+</style>
