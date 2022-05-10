@@ -4,9 +4,11 @@
 
 🎨 Lighter and faster atomic stylesheet, make writing css more enjoyable!
 
+English | [中文](./README_zh.md)
+
 ## Documentation
 
-You can see the effect through the [demo](https://aodazhang.com/project/aoda-css/#/) , get started with the [documentation]() , focus on [changelog](./CHANGELOG.md) of the project to get the latest progress.
+You can see the effect through the [demo](https://aodazhang.com/project/aoda-css/#/) , get started with the [documentation]() , focus on [changelog](./CHANGELOG.md) of the project to get the latest progress !
 
 ## Installation and Usage
 
