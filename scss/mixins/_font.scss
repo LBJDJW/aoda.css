@@ -1,6 +1,6 @@
 /*
  * @description 字体
- * @author aodazhang 2022.05.10
+ * @author aodazhang 2022.05.11
  */
 
 // 1.字体尺寸：字号、字行高、对齐方式、字宽、字间距
@@ -18,8 +18,8 @@
   line-height: $lineHeight; // 字行高
   text-align: $textAlign; // 字体对齐
   word-wrap: $wordWrap; // 文本换行（normal 只在半角空格或连字符的地方进行换行 | break-word 在边界内换行）
-  word-break: $wordBreak; // 字母间断（normal 默认情况 | break-all 单词到边界时,下个字母自动到下一行 | keep-all 单词不断）
-  word-spacing: $wordSpacing; // 字体间距
+  word-break: $wordBreak; // 文本间断（normal 默认情况 | break-all 单词到边界时,下个字母自动到下一行 | keep-all 单词不断）
+  word-spacing: $wordSpacing; // 文本间距
 }
 
 // 2.字体样式：字风格、字首行缩进、字修饰、字大小写转换

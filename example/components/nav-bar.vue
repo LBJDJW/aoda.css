@@ -1,5 +1,5 @@
 <template>
-  <header fl-r fl-jcsb pa-16 bg-1>
+  <header fl-r fl-jcsb pa-16 bg-1 bb-4>
     <h1 fl-1>🎨 aoda.css</h1>
     <div fl-0 ml-20 cu-p us-n @click="toogleTheme">
       {{ theme === 'dark' ? '🌞' : '🌙' }}

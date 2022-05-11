@@ -2,17 +2,17 @@
 
 [![sass](https://img.shields.io/badge/dart--sass-v1.51.0-orange?style=flat-square&logo=github)](https://github.com/sass/dart-sass) [![stylelint](https://img.shields.io/badge/stylelint-v14.8.2-orange?style=flat-square&logo=github)](https://github.com/stylelint/stylelint) ![gzip](https://img.shields.io/badge/gzip-14.2kb-blue?style=flat-square)
 
-🎨 Lighter and faster atomic stylesheet, make writing css more enjoyable!
+🎨 更轻更快的原子化 css 样式库，让切页面变的更加愉悦！
 
-English | [中文](./README_zh.md)
+中文 | [English](./README_en.md)
 
-## Documentation
+## 文档
 
-You can see the effect through the [demo](https://aodazhang.com/project/aoda-css/#/) , get started with the [documentation]() , focus on [changelog](./CHANGELOG.md) of the project to get the latest progress !
+示例参见 [demo](https://aodazhang.com/project/aoda-css/#/) ，更多内容详见 [文档](https://aodazhang.com/aoda-css) ，您可以关注 [changelog](./CHANGELOG.md) 获取最新进展！
 
-## Installation and Usage
+## 安装与使用
 
-#### 1.Installation
+#### 1.安装
 
 - npm
 
@@ -31,14 +31,14 @@ You can see the effect through the [demo](https://aodazhang.com/project/aoda-css
   />
   ```
 
-#### 2.Usage
+#### 2.使用
 
 - main.ts
 
   ```typescript
   import { createApp } from 'vue'
   import App from './App.vue'
-  // 1.import aoda.css in your entry file
+  // 1.在你项目的入口文件中引入 aoda.css
   import 'aoda.css'
 
   createApp(App).mount('#app')
@@ -48,7 +48,7 @@ You can see the effect through the [demo](https://aodazhang.com/project/aoda-css
 
   ```html
   <template>
-    <!-- 2.using aoda.css's attribute selector -->
+    <!-- 2.使用 aoda.css 生成的属性选择器 -->
     <div id="app" bg-5>
       <ul fl-r>
         <li co-2></li>
